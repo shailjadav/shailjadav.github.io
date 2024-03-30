@@ -1225,3 +1225,31 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/* Add these styles to your CSS */
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+.slider-container {
+  max-width: 800px;
+  overflow: hidden;
+}
+.image-slider {
+  display: flex;
+  transition: transform 1.5s ease;
+}
+.image-slider img {
+  max-width: 800px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.arrow {
+  font-size: 48px;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
