@@ -15,10 +15,10 @@ main:
   #   url: /talks/   
 
   - title: "CV"
-    url: /cv/ 
+    url: /assets/sj_cv.pdf
 
-  - title: "Teaching"
-    url: /teaching/    
+  # - title: "Teaching"
+  #   url: /teaching/    
     
   # - title: "Portfolio"
   #   url: /portfolio/
