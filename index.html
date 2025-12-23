@@ -4,1568 +4,722 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="gUMK7i6UCkfvE17Tv6H5khFvD5NUv25Rv4azAGVeRv8" />
-    <title>Shail Jadav - Roboticist</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Shail Jadav · Roboticist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #f8f3ed;
+            --surface: #ffffff;
+            --surface-alt: #f1ece4;
+            --border: rgba(24, 25, 31, 0.12);
+            --text: #18191f;
+            --muted: #6a6b72;
+            --accent: #111111;
+            --accent-soft: #f4d870;
+            --accent-secondary: #f67b50;
+            --shadow: 0 45px 100px rgba(15, 18, 27, 0.08);
         }
 
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #64748b;
-            --accent: #06b6d4;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-card: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
-            --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'General Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Academic & Robotics Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
 
-        /* Academic Paper Trail */
-        .academic-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .formula {
-            position: absolute;
-            font-family: 'Times New Roman', serif;
-            color: rgba(37, 99, 235, 0.1);
-            font-size: 18px;
-            animation: formulaFloat 25s linear infinite;
-            opacity: 0;
-            white-space: nowrap;
-        }
-
-        .research-node {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(6, 182, 212, 0.3);
-            border-radius: 50%;
-            border: 2px solid rgba(6, 182, 212, 0.2);
-        }
-
-        .connection-line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
-            transform-origin: left center;
-        }
-
-        /* Robotic Arm Simulation */
-        .robot-arm {
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform-origin: bottom center;
-        }
-
-        .arm-segment {
-            position: absolute;
-            background: rgba(37, 99, 235, 0.15);
-            border-radius: 4px;
-            transform-origin: bottom center;
-        }
-
-        .arm-segment-1 {
-            width: 4px;
-            height: 80px;
-            animation: armRotate1 8s ease-in-out infinite;
-        }
-
-        .arm-segment-2 {
-            width: 3px;
-            height: 60px;
-            bottom: 80px;
-            animation: armRotate2 6s ease-in-out infinite reverse;
-        }
-
-        .arm-segment-3 {
-            width: 2px;
-            height: 40px;
-            bottom: 140px;
-            animation: armRotate3 4s ease-in-out infinite;
-        }
-
-        .end-effector {
-            position: absolute;
-            bottom: 180px;
-            left: -3px;
-            width: 6px;
-            height: 6px;
-            background: rgba(139, 92, 246, 0.4);
-            border-radius: 50%;
-            animation: effectorPulse 2s ease-in-out infinite;
-        }
-
-        /* Neural Network Visualization */
-        .neural-network {
-            position: absolute;
-            top: 20%;
-            right: 15%;
-            width: 200px;
-            height: 150px;
-        }
-
-        .neuron {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: rgba(37, 99, 235, 0.2);
-            border-radius: 50%;
-            border: 1px solid rgba(37, 99, 235, 0.3);
-        }
-
-        .neuron.active {
-            animation: neuronPulse 3s ease-in-out infinite;
-        }
-
-        .synapse {
-            position: absolute;
-            height: 1px;
-            background: rgba(6, 182, 212, 0.2);
-            animation: synapseFlow 4s linear infinite;
-        }
-
-        /* Coordinate System */
-        .coordinate-system {
-            position: absolute;
-            bottom: 15%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-        }
-
-        .axis {
-            position: absolute;
-            background: rgba(37, 99, 235, 0.2);
-        }
-
-        .x-axis {
-            width: 80px;
-            height: 1px;
-            bottom: 20px;
-            left: 10px;
-        }
-
-        .y-axis {
-            width: 1px;
-            height: 80px;
-            bottom: 20px;
-            left: 10px;
-        }
-
-        .axis-label {
-            position: absolute;
-            font-size: 10px;
-            color: rgba(37, 99, 235, 0.4);
-            font-weight: 500;
-        }
-
-        /* Path Planning Visualization */
-        .path-planning {
-            position: absolute;
-            top: 60%;
-            left: 60%;
-            width: 150px;
-            height: 100px;
-        }
-
-        .waypoint {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(139, 92, 246, 0.3);
-            border-radius: 50%;
-        }
-
-        .trajectory {
-            position: absolute;
-            stroke: rgba(6, 182, 212, 0.2);
-            stroke-width: 1;
-            fill: none;
-            stroke-dasharray: 3, 3;
-            animation: trajectoryTrace 8s linear infinite;
-        }
-
-        /* Academic Achievement Icons */
-        .achievement-icon {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(37, 99, 235, 0.08);
-            animation: achievementFloat 20s linear infinite;
-            opacity: 0;
-        }
-
-        /* Interactive Elements */
-        .interactive-particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(6, 182, 212, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleFade 2s ease-out forwards;
-        }
-
-        /* Animations */
-        @keyframes formulaFloat {
-            0% {
-                transform: translateX(-100%) translateY(0);
-                opacity: 0;
-            }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% {
-                transform: translateX(100vw) translateY(-30px);
-                opacity: 0;
-            }
-        }
-
-        @keyframes armRotate1 {
-            0%, 100% { transform: rotate(-20deg); }
-            50% { transform: rotate(20deg); }
-        }
-
-        @keyframes armRotate2 {
-            0%, 100% { transform: rotate(-15deg); }
-            50% { transform: rotate(25deg); }
-        }
-
-        @keyframes armRotate3 {
-            0%, 100% { transform: rotate(-30deg); }
-            50% { transform: rotate(15deg); }
-        }
-
-        @keyframes effectorPulse {
-            0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.5); opacity: 0.8; }
-        }
-
-        @keyframes neuronPulse {
-            0%, 100% { 
-                background: rgba(37, 99, 235, 0.2);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
-            }
-            50% { 
-                background: rgba(37, 99, 235, 0.6);
-                box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
-            }
-        }
-
-        @keyframes synapseFlow {
-            0% { 
-                background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
-                transform: translateX(-100%);
-            }
-            100% { 
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes trajectoryTrace {
-            0% { stroke-dashoffset: 100; }
-            100% { stroke-dashoffset: 0; }
-        }
-
-        @keyframes achievementFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes particleFade {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(3);
-                opacity: 0;
-            }
-        }
-
-        .interactive-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(37, 99, 235, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .cursor-trail {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: rgba(6, 182, 212, 0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            animation: particleFade 1s ease-out forwards;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
+        .wrapper {
+            width: min(1180px, calc(100% - 2.5rem));
             margin: 0 auto;
-            padding: 1rem 2rem;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(248, 243, 237, 0.9);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(24px);
+        }
+
+        nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 0;
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 0.9rem;
+            letter-spacing: 0.45rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1rem;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
             position: relative;
+            padding-bottom: 0.2rem;
+            color: var(--muted);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
             left: 0;
-            width: 0;
+            bottom: 0;
             height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
             width: 100%;
+            background: var(--text);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { transform: scaleX(1); }
 
-        /* Hero Section */
+        main { padding-bottom: 6rem; }
+
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 5rem 0 3rem;
         }
 
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             align-items: center;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--muted);
             margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
         }
 
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: var(--accent);
+        .hero h1 {
+            font-size: clamp(2.6rem, 4.5vw, 4.8rem);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            font-weight: 500;
         }
 
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        .hero p {
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+            max-width: 520px;
         }
 
-        .hero-buttons {
+        .chips {
             display: flex;
-            gap: 1rem;
             flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .chip {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .btn {
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 1rem;
+            padding: 0.85rem 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
-            background: white;
-            color: var(--text-primary);
-            border: 2px solid var(--border);
+            border-color: var(--border);
+            color: var(--text);
+            background: transparent;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
+        .btn:hover { transform: translateY(-2px); }
 
         .profile-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: var(--shadow-xl);
+            background: var(--surface);
+            border-radius: 32px;
+            padding: 2.2rem;
             border: 1px solid var(--border);
-            max-width: 400px;
-            width: 100%;
-            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
 
-        .profile-image {
+        .profile-card::after {
+            content: '';
+            position: absolute;
+            inset: 1.2rem;
+            border: 1px solid rgba(24, 25, 31, 0.06);
+            border-radius: 28px;
+        }
+
+        .profile-card img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
+            border: 6px solid var(--surface);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-card h3 {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-card span {
+            text-align: center;
+            color: var(--muted);
             display: block;
-            border: 4px solid transparent;
-            background: var(--gradient-primary);
-            padding: 4px;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #f1f5f9;
-        }
-
-        .profile-info h3 {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-info .role {
-            text-align: center;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .profile-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
             margin-bottom: 1.5rem;
         }
 
-        .meta-item {
+        .fact-list {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            flex-direction: column;
+            gap: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        .meta-item i {
-            width: 16px;
-            color: var(--accent);
+        .fact-list strong {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+            color: var(--text);
+            font-size: 0.75rem;
         }
 
-        .social-links {
+        .socials {
             display: flex;
             justify-content: center;
             gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--bg-secondary);
+        .socials a {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
+            color: var(--text);
         }
 
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
+        section { padding: 4.5rem 0; }
+
+        .section-head {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            position: relative;
+        .section-head h2 {
+            font-size: 2.2rem;
         }
 
-        .section:nth-child(even) {
-            background: var(--bg-secondary);
-        }
+        .section-head p { color: var(--muted); max-width: 640px; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* News Section */
-        .news-grid {
+        .card-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
         }
 
-        .news-item {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
+        .card {
+            background: var(--surface);
+            border-radius: 24px;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            padding: 1.6rem;
+            min-height: 220px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .card p { color: var(--muted); }
+
+        .about-wrapper {
+            background: var(--surface);
+            border-radius: 30px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
             box-shadow: var(--shadow);
-        }
-
-        .news-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-primary);
-        }
-
-        .news-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .news-date {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Publications Section */
-        .publications-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
         }
 
-        .publication-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
+        .about-wrapper p { color: var(--muted); }
+
+        .highlight {
+            background: var(--surface);
+            border-radius: 28px;
+            padding: 1.6rem;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: var(--shadow);
+        }
+
+        .highlight-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            gap: 1rem;
+            color: var(--muted);
         }
 
-        .publication-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .publication-visual {
-            height: 240px;
-            background: var(--bg-secondary);
+        .news-item {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .news-date {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1rem;
+            color: var(--muted);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 26px;
+            border: 1px solid var(--border);
             overflow: hidden;
-            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content { padding: 1.5rem; }
+        .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+
+        .tag {
+            background: var(--surface-alt);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05rem;
+            padding: 0.3rem 0.9rem;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .publication-card {
+            background: var(--surface);
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            overflow: hidden;
         }
 
         .publication-visual img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .publication-visual .placeholder {
-            font-size: 3rem;
-            color: var(--text-muted);
+            object-fit: cover;
         }
 
         .publication-content {
-            padding: 1.5rem;
-            flex-grow: 1;
+            padding: 1.8rem;
             display: flex;
             flex-direction: column;
+            gap: 0.6rem;
         }
 
-        .publication-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
+        .publication-content h3 { font-size: 1.2rem; }
+        .publication-content small { color: var(--muted); text-transform: uppercase; letter-spacing: 0.1rem; }
+        .publication-content p { color: var(--muted); }
 
-        .publication-authors {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .publication-venue {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .publication-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .publication-links {
+        .pub-links {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: auto;
+            margin-top: 0.6rem;
         }
 
-        .publication-link {
-            padding: 0.4rem 0.8rem;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 8px;
+        .pub-links a {
             font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09rem;
+            border-bottom: 1px solid transparent;
+            color: var(--accent-secondary);
+        }
+
+        .pub-links a:hover { border-color: var(--accent-secondary); }
+
+        .contact {
+            background: var(--surface);
+            border-radius: 34px;
+            padding: 3rem;
             border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: var(--shadow);
         }
 
-        .publication-link:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 2rem 0 3rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-container {
+        @media (max-width: 1024px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
             }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            .hero-content .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .chips,
+            .cta-row {
+                justify-content: center;
             }
 
             .profile-card {
-                max-width: 300px;
-            }
-
-            .publications-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                margin: 0 auto;
             }
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .publications-grid {
-                gap: 1.5rem;
-            }
-            
-            .publication-visual {
-                height: 220px;
-            }
+        @media (max-width: 720px) {
+            nav { flex-direction: column; gap: 1rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .cta-row { flex-direction: column; }
+            .profile-card::after { display: none; }
+            .publication-card { grid-template-columns: 1fr; }
         }
 
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Parallax effect */
-        .parallax {
-            transform: translateY(var(--scroll-y, 0));
+        @media (max-width: 600px) {
+            .wrapper { width: calc(100% - 1.5rem); }
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <!-- Academic Elements -->
-        <div class="academic-elements">
-            <div class="formula" style="top: 10%; animation-delay: 0s;">∂L/∂q = τ</div>
-            <div class="formula" style="top: 30%; animation-delay: 5s;">F = ma</div>
-            <div class="formula" style="top: 50%; animation-delay: 10s;">x̂ = Ax + Bu</div>
-            <div class="formula" style="top: 70%; animation-delay: 15s;">J(q)ẍ + C(q,q̇) = τ</div>
-            <div class="formula" style="top: 90%; animation-delay: 20s;">θ* = argmin Σ(yi - f(xi))²</div>
-        </div>
+<header>
+    <div class="wrapper">
+        <nav>
+            <div class="logo">SHAIL JADAV</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#news">News</a>
+                <a href="#publications">Publications</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
-        <!-- Robotic Arm Visualization -->
-        <div class="robot-arm">
-            <div class="arm-segment arm-segment-1">
-                <div class="arm-segment arm-segment-2">
-                    <div class="arm-segment arm-segment-3">
-                        <div class="end-effector"></div>
-                    </div>
+<main class="wrapper">
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="eyebrow">Roboticist · Postdoctoral Research Fellow</div>
+                <h1>Designing collaborative robots that move with people—not around them.</h1>
+                <p>I work with Prof. Dongheui Lee at TU Wien to advance safe human-robot collaboration, force-aware manipulation, and learning systems. My Ph.D. in Mechanical Engineering from IIT Gandhinagar (2024 gold medal) focused on human-inspired learning controllers for manipulators.</p>
+                <div class="chips">
+                    <span class="chip">safe Human-Robot Collaboration</span>
+                    <span class="chip">Nonlinear Control</span>
+                    <span class="chip"> Robot Learning</span>
+                </div>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="sj_cv.pdf" target="_blank" rel="noreferrer"><i class="fa-solid fa-download"></i>Download CV</a>
+                    <a class="btn btn-secondary" href="#contact"><i class="fa-solid fa-paper-plane"></i>Collaborate</a>
+                </div>
+            </div>
+            <div class="profile-card">
+                <img src="images/profile.png" alt="Portrait of Shail Jadav">
+                <h3>Shail Jadav</h3>
+                <span>Vienna, Austria · TU Wien Autonomous Systems Lab</span>
+                <ul class="fact-list">
+                    <li>
+                        <strong>Doctorate</strong>
+                        Ph.D., Mechanical Engineering, IIT Gandhinagar (2024 — Gold Medal).
+                    </li>
+                    <li>
+                        <strong>Previous Residencies</strong>
+                        Visiting researcher at TU Wien (pre-doc) and The University of Texas at Austin (gait therapy systems).
+                    </li>
+                </ul>
+                <div class="socials">
+                    <a href="mailto:shail.jadav@tuwien.ac.at"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" target="_blank"><i class="fa-solid fa-graduation-cap"></i></a>
+                    <a href="https://github.com/shailjadav" target="_blank"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Neural Network -->
-        <div class="neural-network">
-            <div class="neuron active" style="top: 10px; left: 10px;"></div>
-            <div class="neuron active" style="top: 40px; left: 10px;"></div>
-            <div class="neuron" style="top: 70px; left: 10px;"></div>
-            
-            <div class="neuron active" style="top: 20px; left: 100px;"></div>
-            <div class="neuron" style="top: 50px; left: 100px;"></div>
-            
-            <div class="neuron active" style="top: 35px; left: 180px;"></div>
-            
-            <div class="synapse" style="top: 22px; left: 22px; width: 78px; transform: rotate(15deg);"></div>
-            <div class="synapse" style="top: 52px; left: 22px; width: 78px; transform: rotate(-15deg);"></div>
-            <div class="synapse" style="top: 35px; left: 112px; width: 68px;"></div>
+    <section id="about">
+        <div class="about-wrapper">
+        <p>I am a Postdoctoral Research Fellow at the Technical University of Vienna (TU Wien), working with Prof. Dongheui Lee. My research focuses on advancing safe and efficient human-robot collaboration through robotics and control theory. I apply concepts from nonlinear control and robot learning to various manipulators and grasping systems.</p>
+
+
+        <p>I completed my Ph.D. in Mechanical Engineering at IIT Gandhinagar in 2024, where I worked alongside Prof. Harish PM to develop human-inspired learning controllers and motion planners for robotic manipulators, earning a gold medal for innovation.</p>
         </div>
+    </section>
 
-        <!-- Coordinate System -->
-        <div class="coordinate-system">
-            <div class="axis x-axis"></div>
-            <div class="axis y-axis"></div>
-            <div class="axis-label" style="bottom: 5px; left: 85px;">X</div>
-            <div class="axis-label" style="bottom: 95px; left: 5px;">Y</div>
+    <section>
+        <div class="section-head">
+            <h2>Recognitions &amp; Fellowships</h2>
+            <p>Support that lets me keep building high-impact robotics with multidisciplinary teams.</p>
         </div>
-
-        <!-- Path Planning -->
-        <div class="path-planning">
-            <svg width="150" height="100">
-                <path class="trajectory" d="M10,80 Q40,20 80,50 Q120,80 140,30"></path>
-            </svg>
-            <div class="waypoint" style="top: 70px; left: 10px;"></div>
-            <div class="waypoint" style="top: 40px; left: 80px;"></div>
-            <div class="waypoint" style="top: 20px; left: 140px;"></div>
-        </div>
-
-        <!-- Academic Achievement Icons -->
-        <div class="achievement-icon" style="left: 5%; animation-delay: 0s;">🎓</div>
-        <div class="achievement-icon" style="left: 25%; animation-delay: 8s;">📊</div>
-        <div class="achievement-icon" style="left: 45%; animation-delay: 16s;">🏆</div>
-        <div class="achievement-icon" style="left: 65%; animation-delay: 24s;">📝</div>
-        <div class="achievement-icon" style="left: 85%; animation-delay: 32s;">🔬</div>
-
-        <!-- Research Network Nodes -->
-        <div class="research-node" style="top: 25%; left: 30%;"></div>
-        <div class="research-node" style="top: 45%; left: 70%;"></div>
-        <div class="research-node" style="top: 65%; left: 40%;"></div>
-        <div class="research-node" style="top: 35%; left: 80%;"></div>
-        
-        <!-- Connection Lines -->
-        <div class="connection-line" style="top: 25%; left: 30%; width: 40%; transform: rotate(15deg);"></div>
-        <div class="connection-line" style="top: 45%; left: 40%; width: 30%; transform: rotate(-20deg);"></div>
-        <div class="connection-line" style="top: 50%; left: 70%; width: 10%; transform: rotate(45deg);"></div>
-    </div>
-    <div class="interactive-cursor" id="cursor"></div>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Shail Jadav</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="sj_cv.pdf" target="_blank">CV</a></li>
+        <div class="highlight">
+            <ul class="highlight-list">
+                <li>Gold Medal for innovation at IIT Gandhinagar's 13th convocation (2024).</li>
+                <li>DST NIDHI PRAYAS grant for adaptive motion controllers.</li>
+                <li>IEEE RAS &amp; SPARC travel grants for international collaborations.</li>
+                <li>IITGN Overseas Research Fellowship for TU Wien residency and Boeing BUILD Bootcamp regional win.</li>
             </ul>
         </div>
-    </nav>
+    </section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="about">
-        <div class="hero-container">
-            <div class="hero-content fade-in">
-                <h1>Shail Jadav</h1>
-                <div class="subtitle">Roboticist & Researcher</div>
-                <p>Advancing safe and efficient human-robot collaboration through cutting-edge robotics and control theory. Applying concepts from nonlinear control and robot learning to manipulators and grasping systems.</p>
-                <div class="hero-buttons">
-                    <a href="#publications" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        View Research
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image fade-in">
-                <div class="profile-card">
-                    <div class="profile-image">
-                        <img src="./images/profile.png" alt="Shail Jadav">
-                    </div>
-                    <div class="profile-info">
-                        <h3>Shail Jadav</h3>
-                        <div class="role">Postdoctoral Research Fellow</div>
-                        <div class="profile-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Vienna, Austria
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-university"></i>
-                                TU Wien
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                Ph.D. in Mechanical Engineering
-                            </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="mailto:shail.jadav@tuwien.ac.at" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" class="social-link">
-                                <i class="fas fa-graduation-cap"></i>
-                            </a>
-                            <a href="https://github.com/shailjadav" class="social-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="news">
+        <div class="section-head">
+            <h2>Latest News</h2>
+            <p>Milestones from TU Wien, IIT Gandhinagar, and partner labs.</p>
+        </div>
+        <div class="card-grid">
+            <article class="news-item">
+                <div class="news-date">July 2025</div>
+                <p>Our study <a href="https://www.nature.com/articles/s41598-025-03341-9" target="_blank">Partner familiarity enhances performance in a manual precision task</a> is now published in <em>Nature Scientific Reports</em>.</p>
+            </article>
+            <article class="news-item">
+                <div class="news-date">May 2025</div>
+                <p>REASSEMBLE, our multimodal dataset for contact-rich assembly &amp; disassembly, has been accepted to RSS 2025.</p>
+            </article>
+            <article class="news-item">
+                <div class="news-date">May 2024</div>
+                <p>Completed my Ph.D. at IIT Gandhinagar with a gold medal celebrating outstanding innovation.</p>
+            </article>
+            <article class="news-item">
+                <div class="news-date">May 2024</div>
+                <p>Presented our shared-autonomy paper at ICRA 2024 in Yokohama, showcasing SALADS for co-manufacturing.</p>
+            </article>
         </div>
     </section>
 
-    <!-- About Section -->
-        <!-- About Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate about pushing the boundaries of robotics and human-robot interaction</p>
-            </div>
-            <div class="fade-in" style="background-color: white; padding: 2rem; border-radius: 16px; box-shadow: var(--shadow);">
-                <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
-                   I am a Postdoctoral Research Fellow at the Technical University of Vienna (TU Wien), working with Prof. Dongheui Lee. My research focuses on advancing safe and efficient human-robot collaboration through robotics and control theory. I apply concepts from nonlinear control and robot learning to various manipulators and grasping systems.
-                </p>
-                <br>
-                <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
-                   I completed my Ph.D. in Mechanical Engineering at IIT Gandhinagar in 2024, where I worked alongside Prof. Harish PM to develop human-inspired learning controllers and motion planners for robotic manipulators. My academic journey has been enriched by international research experiences, including visiting researcher positions at TU Wien, focusing on shared human-robot autonomy, and at the University of Texas at Austin, where I worked on single-degree-of-freedom gait training devices.
-                </p>
-                <br>
-                <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
-                   I have been fortunate to receive several recognitions for my work, including a gold medal at IIT Gandhinagar's 13th convocation. My research has been supported by multiple grants, such as the DST NIDHI PRAYAS grant for developing an adaptive motion controller, the IEEE RAS Student Travel Grant, the SPARC Travel Grant for my work at UT Austin, and the IITGN Overseas Research Fellowship for my research at TU Wien. I also had the honor of winning the regional Boeing BUILD Bootcamp for startups.
-                </p>
-            </div>
+    <section id="publications">
+        <div class="section-head">
+            <h2>Featured Publications</h2>
+            <p>Peer-reviewed research across human-robot collaboration, control theory, and rehabilitation.</p>
+        </div>
+        <div class="card-grid" style="gap: 2rem;">
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/human-human.gif" alt="Manual precision task study">
+                </div>
+                <div class="publication-content">
+                    <small>Nature Scientific Reports · 2025</small>
+                    <h3>Partner familiarity enhances performance in a manual precision task</h3>
+                    <p>With J. Heidersberger et al. — Examines how partner familiarity shapes strategies and fluency in collaborative manual tasks.</p>
+                    <div class="pub-links">
+                        <a href="https://www.nature.com/articles/s41598-025-03341-9" target="_blank">Article</a>
+                        <a href="https://www.nature.com/articles/s41598-025-03341-9.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/reassamble.gif" alt="REASSEMBLE dataset">
+                </div>
+                <div class="publication-content">
+                    <small>Robotics: Science and Systems · 2025</small>
+                    <h3>REASSEMBLE: A Multimodal Dataset for Contact-rich Robotic Assembly and Disassembly</h3>
+                    <p>With D. Sliwowski et al. — Provides a dataset spanning long-horizon assembly with synchronized force, pose, and video streams.</p>
+                    <div class="pub-links">
+                        <a href="https://tuwien-asl.github.io/REASSEMBLE_page/" target="_blank">Project</a>
+                        <a href="https://arxiv.org/pdf/2502.05086" target="_blank">PDF</a>
+                        <a href="https://arxiv.org/abs/2502.05086" target="_blank">arXiv</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/icra.gif" alt="Shared autonomy">
+                </div>
+                <div class="publication-content">
+                    <small>ICRA · 2024</small>
+                    <h3>Shared Autonomy via Variable Impedance Control and Virtual Potential Fields</h3>
+                    <p>With J. Heidersberger, C. Ott, and D. Lee — Introduces SALADS for complex human-robot co-manufacturing.</p>
+                    <div class="pub-links">
+                        <a href="https://shailjadav.github.io/SALADS/" target="_blank">Project</a>
+                        <a href="https://arxiv.org/pdf/2403.12720" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/vilc.gif" alt="Variable impedance control">
+                </div>
+                <div class="publication-content">
+                    <small>Journal of Intelligent &amp; Robotic Systems · 2024</small>
+                    <h3>Configuration and force-field aware variable impedance control with faster re-learning</h3>
+                    <p>With H. J. Palanthandalam-Madapusi — Tackles typical VIC challenges by adapting to configuration and external force fields.</p>
+                    <div class="pub-links">
+                        <a href="https://link.springer.com/article/10.1007/s10846-023-02022-x" target="_blank">Article</a>
+                        <a href="https://link.springer.com/content/pdf/10.1007/s10846-023-02022-x.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/PDEYE4.gif" alt="Parkinson's detection">
+                </div>
+                <div class="publication-content">
+                    <small>MDPI Applied Sciences · 2023</small>
+                    <h3>A Machine-Learning-Based Method to Detect Degradation of Motor Control Stability</h3>
+                    <p>With V. Shah et al. — Combines control theory and ML to flag presymptomatic Parkinson's disease.</p>
+                    <div class="pub-links">
+                        <a href="https://www.mdpi.com/2076-3417/13/17/9502" target="_blank">Article</a>
+                        <a href="https://www.mdpi.com/2076-3417/13/17/9502/pdf?version=1692703223" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/gt.gif" alt="Gait trainer paper">
+                </div>
+                <div class="publication-content">
+                    <small>ASME Journal of Medical Devices · 2024</small>
+                    <h3>Kinematic Performance of a Customizable Single Degree-of-Freedom Gait Trainer</h3>
+                    <p>With K. S. Karvaje et al. — Demonstrates cost-effective gait therapy with customizable trajectories.</p>
+                    <div class="pub-links">
+                        <a href="https://asmedigitalcollection.asme.org/medicaldevices/article/18/1/011003/1198715/Kinematic-Performance-of-a-Customizable-Single" target="_blank">Article</a>
+                        <a href="https://asmedigitalcollection.asme.org/medicaldevices/article-pdf/18/1/011003/7325113/med_018_01_011003.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="publication-card">
+                <div class="publication-visual">
+                    <img src="images/papers/red_asme.gif" alt="Manipulator redundancy">
+                </div>
+                <div class="publication-content">
+                    <small>ASME Letters in Dynamic Systems and Control · 2024</small>
+                    <h3>Utilization of Manipulator Redundancy for Torque Reduction During Force Interaction</h3>
+                    <p>With H. J. Palanthandalam-Madapusi — Introduces redundancy objectives that lower joint torques under external disturbances.</p>
+                    <div class="pub-links">
+                        <a href="https://asmedigitalcollection.asme.org/lettersdynsys/article/4/2/021005/1195452" target="_blank">Article</a>
+                        <a href="https://asmedigitalcollection.asme.org/lettersdynsys/article-pdf/4/2/021005/7246126/aldsc_4_2_021005.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cta-row" style="justify-content:center; margin-top:2.5rem;">
+            <a class="btn btn-primary" href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" target="_blank"><i class="fa-solid fa-graduation-cap"></i>View Google Scholar</a>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="section" id="news">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Latest News</h2>
-                <p class="section-subtitle">Recent updates and milestones in my research journey</p>
-            </div>
-            <div class="news-grid fade-in">
-                <div class="news-item">
-                    <div class="news-date">July 2025</div>
-                    <p>I am pleased to share that our paper, <a href="https://www.nature.com/articles/s41598-025-03341-9" target="_blank">"Partner familiarity enhances performance in a manual precision task"</a>, has been published in <em>Nature Scientific Reports</em>.
-                    </p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">May 2025</div>
-                    <p>Happy to share that our paper "Demonstrating REASSEMBLE: A Multimodal Dataset for Contact-rich Robotic Assembly and Disassembly" has been accepted to Robotics: Science and Systems (RSS 2025)</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">May 2024</div>
-                    <p>I completed my Ph.D. at IIT Gandhinagar, earning a gold medal in recognition of outstanding innovation.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">May 2024</div>
-                    <p>I presented our paper 'Shared Autonomy via Variable Impedance Control and Virtual Potential Fields for Encoding Human Demonstrations' at ICRA 2024 in Yokohama, Japan.</p>
-                </div>
+    <section id="contact">
+        <div class="contact">
+            <h2>Let’s shape the next generation of collaborative robots.</h2>
+            <p>Email me about research collaborations, visiting students, or speaking invitations.</p>
+            <div class="cta-row" style="justify-content:center; margin-top:1.5rem;">
+                <a class="btn btn-primary" href="mailto:shail.jadav@tuwien.ac.at"><i class="fa-solid fa-envelope"></i>shail.jadav@tuwien.ac.at</a>
+                <a class="btn btn-secondary" href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" target="_blank"><i class="fa-solid fa-graduation-cap"></i>Scholar Profile</a>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Publications Section -->
-    <section class="section" id="publications">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Publications</h2>
-                <p class="section-subtitle">Contributions to robotics, control theory, and human-robot collaboration</p>
-            </div>
-            <div class="publications-grid fade-in">
+<footer>
+    <p>© <span id="year"></span> Shail Jadav</p>
+</footer>
 
-                   <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/human-human.gif" alt="Human-Human Collaboration">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Partner familiarity enhances performance in a manual precision task</h3>
-                        <p class="publication-authors">Johannes Heidersberger, Jakob Kaiser, <strong>Shail Jadav</strong>, Lucija Mihić Zidar, Arianna Curioni, Leif Johannsen & Dongheui Lee</p>
-                        <p class="publication-venue">Nature Scientific Reports</p>
-                        <p class="publication-description">We explored whether people learn to work together differently depending on their partner, what teamwork strategies they develop, and how personal differences affect how well they collaborate.</p>
-                        <div class="publication-links">
-                            <!-- <a href="https://tuwien-asl.github.io/REASSEMBLE_page/" class="publication-link">
-                                <i class="fas fa-link"></i> Project Page
-                            </a> -->
-                            <a href="https://www.nature.com/articles/s41598-025-03341-9.pdf" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://www.nature.com/articles/s41598-025-03341-9" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/reassamble.gif" alt="REASSEMBLE Dataset">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">REASSEMBLE: A Multimodal Dataset for Contact-rich Robotic Assembly and Disassembly</h3>
-                        <p class="publication-authors">Daniel Sliwowski, <strong>Shail Jadav</strong>, Sergej Stanovcic, Johannes Heidersberger, Jedrzej Orbik, Dongheui Lee</p>
-                        <p class="publication-venue">Robotics: Science and Systems (RSS 2025)</p>
-                        <p class="publication-description">We release a multimodal dataset for long-horizon contact-rich assembly and disassembly tasks.</p>
-                        <div class="publication-links">
-                            <a href="https://tuwien-asl.github.io/REASSEMBLE_page/" class="publication-link">
-                                <i class="fas fa-link"></i> Project Page
-                            </a>
-                            <a href="https://arxiv.org/pdf/2502.05086" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://arxiv.org/abs/2502.05086" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> arXiv
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/icra.gif" alt="Shared Autonomy Framework">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Shared Autonomy via Variable Impedance Control and Virtual Potential Fields for Encoding Human Demonstrations</h3>
-                        <p class="publication-authors"><strong>Shail Jadav</strong>, Johannes Heidersberger, Christian Ott, Dongheui Lee</p>
-                        <p class="publication-venue">IEEE International Conference on Robotics and Automation (ICRA) 2024</p>
-                        <p class="publication-description">This article introduces a framework for complex human-robot collaboration tasks, such as the co-manufacturing of furniture.</p>
-                        <div class="publication-links">
-                            <a href="https://shailjadav.github.io/SALADS/" class="publication-link">
-                                <i class="fas fa-link"></i> Project Page
-                            </a>
-                            <a href="https://arxiv.org/pdf/2403.12720" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://arxiv.org/abs/2403.12720" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> arXiv
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/vilc.gif" alt="Variable Impedance Control">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Configuration and force-field aware variable impedance control with faster re-learning</h3>
-                        <p class="publication-authors"><strong>Shail Jadav</strong>, & Harish J Palanthandalam-Madapusi</p>
-                        <p class="publication-venue">Springer Journal of Intelligent & Robotic Systems (2024)</p>
-                        <p class="publication-description">We introduce an innovative VIC algorithm that addresses typical VIC challenges.</p>
-                        <div class="publication-links">
-                            <a href="https://link.springer.com/content/pdf/10.1007/s10846-023-02022-x.pdf" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://link.springer.com/article/10.1007/s10846-023-02022-x" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/PDEYE4.gif" alt="Parkinson's Disease Detection">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">A Machine-Learning-Based Method to Detect Degradation of Motor Control Stability with Implications to Diagnosis of Presymptomatic Parkinson's Disease</h3>
-                        <p class="publication-authors">Vrutangkumar V Shah, <strong>Shail Jadav</strong>, Sachin Goyal, Harish J Palanthandalam-Madapusi</p>
-                        <p class="publication-venue">MDPI Applied Sciences (2023)</p>
-                        <p class="publication-description">We introduce an innovative ML & control theory based method for early diagnosis of Parkinson's disease.</p>
-                        <div class="publication-links">
-                            <a href="https://www.mdpi.com/2076-3417/13/17/9502/pdf?version=1692703223" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://www.mdpi.com/2076-3417/13/17/9502" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/gt.gif" alt="Gait Trainer">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Kinematic Performance of a Customizable Single Degree-of-Freedom Gait Trainer for Cost-Effective Therapy</h3>
-                        <p class="publication-authors"><strong>Shail Jadav</strong>, Karthik Subramanya Karvaje, Sujay D. Kadam, Vineet Vashista, James Sulzer, Ashish Deshpande, Harish J. Palanthandalam-Madapusi</p>
-                        <p class="publication-venue">ASME Journal of Medical Devices (2024)</p>
-                        <p class="publication-description">We advance the development of a single degree-of-freedom (DOF) gait trainer for gait therapy for individuals with neuromuscular impairments.</p>
-                        <div class="publication-links">
-                            <a href="https://asmedigitalcollection.asme.org/medicaldevices/article-pdf/18/1/011003/7325113/med_018_01_011003.pdf" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://asmedigitalcollection.asme.org/medicaldevices/article/18/1/011003/1198715/Kinematic-Performance-of-a-Customizable-Single" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication-card">
-                    <div class="publication-visual">
-                        <img src="./images/papers/red_asme.gif" alt="Manipulator Redundancy">
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Utilization of Manipulator Redundancy for Torque Reduction During Force Interaction</h3>
-                        <p class="publication-authors"><strong>Shail Jadav</strong>, & Harish J Palanthandalam-Madapusi</p>
-                        <p class="publication-venue">ASME Letters in Dynamic Systems and Control (2024)</p>
-                        <p class="publication-description">This paper introduces a novel objective function that responds to all external disturbances at the end-effector, aiming to lower joint torques via redundancy.</p>
-                        <div class="publication-links">
-                            <a href="https://asmedigitalcollection.asme.org/lettersdynsys/article-pdf/4/2/021005/7246126/aldsc_4_2_021005.pdf" class="publication-link">
-                                <i class="fas fa-file-pdf"></i> PDF
-                            </a>
-                            <a href="https://asmedigitalcollection.asme.org/lettersdynsys/article/4/2/021005/1195452" class="publication-link">
-                                <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" class="btn btn-primary">
-                    <i class="fas fa-graduation-cap"></i>
-                    View Google Scholar
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-subtitle">Let's collaborate on advancing the future of robotics</p>
-            </div>
-            <div style="text-align: center;">
-                <div style="background: white; border-radius: 20px; padding: 3rem; max-width: 600px; margin: 0 auto; border: 1px solid var(--border); box-shadow: var(--shadow-lg);">
-                    <div style="margin-bottom: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">Shail Jadav</h3>
-                        <p style="color: var(--text-secondary);">Postdoctoral Research Fellow</p>
-                        <p style="color: var(--text-secondary);">Technical University of Vienna (TU Wien)</p>
-                    </div>
-                    <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-                        <a href="mailto:shail.jadav@tuwien.ac.at" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i>
-                            Email Me
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=n81CLlAAAAAJ&hl=en" class="btn btn-secondary">
-                            <i class="fas fa-graduation-cap"></i>
-                            Google Scholar
-                        </a>
-                    </div>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">
-                        <i class="fas fa-map-marker-alt"></i> Vienna, Austria
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.2s';
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with fade-in class
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
             }
         });
+    }, { threshold: 0.1 });
 
-        // Interactive cursor with trail
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Create particle trail
-            if (Math.random() < 0.3) {
-                createCursorTrail(e.clientX, e.clientY);
-            }
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        function createCursorTrail(x, y) {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            trail.style.left = x + 'px';
-            trail.style.top = y + 'px';
-            document.body.appendChild(trail);
-            
-            setTimeout(() => trail.remove(), 1000);
-        }
-
-        // Interactive robotic arm follows mouse
-        const robotArm = document.querySelector('.robot-arm');
-        let armTimeout;
-        
-        document.addEventListener('mousemove', (e) => {
-            clearTimeout(armTimeout);
-            armTimeout = setTimeout(() => {
-                const rect = robotArm.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                const deltaX = e.clientX - centerX;
-                const deltaY = e.clientY - centerY;
-                const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-                
-                const arm1 = robotArm.querySelector('.arm-segment-1');
-                const arm2 = robotArm.querySelector('.arm-segment-2');
-                const arm3 = robotArm.querySelector('.arm-segment-3');
-                
-                arm1.style.transform = `rotate(${Math.max(-45, Math.min(45, angle / 3))}deg)`;
-                arm2.style.transform = `rotate(${Math.max(-30, Math.min(30, angle / 4))}deg)`;
-                arm3.style.transform = `rotate(${Math.max(-60, Math.min(60, angle / 2))}deg)`;
-            }, 50);
-        });
-
-        // Neural network interaction
-        document.querySelectorAll('.publication-card, .btn').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                // Activate all neurons
-                document.querySelectorAll('.neuron').forEach(neuron => {
-                    neuron.classList.add('active');
-                });
-                
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursor.style.borderColor = 'rgba(37, 99, 235, 0.6)';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                // Reset neurons
-                setTimeout(() => {
-                    document.querySelectorAll('.neuron').forEach((neuron, index) => {
-                        if (index % 2 === 0) neuron.classList.remove('active');
-                    });
-                }, 500);
-                
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursor.style.borderColor = 'rgba(37, 99, 235, 0.3)';
-            });
-        });
-
-        // Generate mathematical formulas on click
-        const mathFormulas = [
-            'ẍ = f(x,u,t)',
-            'H = K + P',
-            'τ = Ia',
-            'q̇ = ∂H/∂p',
-            'L = T - V',
-            '∇²φ = 0',
-            'F⃗ = m⃗a',
-            'σ(x) = 1/(1+e⁻ˣ)',
-            'J* = min∫L(x,u)dt',
-            'Ax = b'
-        ];
-
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.navbar') || e.target.closest('.btn')) return;
-            
-            const formula = document.createElement('div');
-            formula.className = 'formula';
-            formula.textContent = mathFormulas[Math.floor(Math.random() * mathFormulas.length)];
-            formula.style.left = e.clientX + 'px';
-            formula.style.top = e.clientY + 'px';
-            formula.style.position = 'fixed';
-            formula.style.zIndex = '1000';
-            formula.style.animation = 'formulaFloat 6s ease-out forwards';
-            
-            document.body.appendChild(formula);
-            setTimeout(() => formula.remove(), 6000);
-            
-            // Create interaction particles
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    createInteractionParticle(e.clientX, e.clientY);
-                }, i * 100);
-            }
-        });
-
-        function createInteractionParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.className = 'interactive-particle';
-            particle.style.left = (x + (Math.random() - 0.5) * 50) + 'px';
-            particle.style.top = (y + (Math.random() - 0.5) * 50) + 'px';
-            document.body.appendChild(particle);
-            
-            setTimeout(() => particle.remove(), 2000);
-        }
-
-        // Research nodes connection visualization
-        const researchNodes = document.querySelectorAll('.research-node');
-        let nodeConnections = [];
-
-        function updateNodeConnections() {
-            // Animate connection lines based on scroll
-            const scrollProgress = window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
-            
-            document.querySelectorAll('.connection-line').forEach((line, index) => {
-                const delay = index * 200;
-                const opacity = Math.sin(Date.now() / 1000 + delay) * 0.3 + 0.3;
-                line.style.background = `linear-gradient(90deg, transparent, rgba(6, 182, 212, ${opacity}), transparent)`;
-            });
-        }
-
-        // Path planning interaction
-        let pathPoints = [];
-        const pathPlanning = document.querySelector('.path-planning svg path');
-
-        document.addEventListener('mousemove', (e) => {
-            const rect = document.querySelector('.path-planning').getBoundingClientRect();
-            if (e.clientX >= rect.left && e.clientX <= rect.right && 
-                e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                
-                const localX = ((e.clientX - rect.left) / rect.width) * 150;
-                const localY = ((e.clientY - rect.top) / rect.height) * 100;
-                
-                pathPoints.push({x: localX, y: localY});
-                if (pathPoints.length > 5) pathPoints.shift();
-                
-                if (pathPoints.length >= 3) {
-                    const pathData = generateSmoothPath(pathPoints);
-                    pathPlanning.setAttribute('d', pathData);
-                }
-            }
-        });
-
-        function generateSmoothPath(points) {
-            if (points.length < 2) return '';
-            
-            let path = `M${points[0].x},${points[0].y}`;
-            for (let i = 1; i < points.length; i++) {
-                const prev = points[i - 1];
-                const curr = points[i];
-                const next = points[i + 1];
-                
-                if (next) {
-                    const cp1x = prev.x + (curr.x - prev.x) / 3;
-                    const cp1y = prev.y + (curr.y - prev.y) / 3;
-                    const cp2x = curr.x - (next.x - prev.x) / 6;
-                    const cp2y = curr.y - (next.y - prev.y) / 6;
-                    
-                    path += ` C${cp1x},${cp1y} ${cp2x},${cp2y} ${curr.x},${curr.y}`;
-                } else {
-                    path += ` L${curr.x},${curr.y}`;
-                }
-            }
-            return path;
-        }
-
-        // Academic achievement celebration
-        document.querySelectorAll('.news-item').forEach(newsItem => {
-            newsItem.addEventListener('click', () => {
-                // Create celebration particles
-                const rect = newsItem.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                for (let i = 0; i < 10; i++) {
-                    setTimeout(() => {
-                        const achievement = document.createElement('div');
-                        achievement.textContent = ['🎉', '✨', '🏆', '📊', '🚀'][Math.floor(Math.random() * 5)];
-                        achievement.style.position = 'fixed';
-                        achievement.style.left = centerX + (Math.random() - 0.5) * 100 + 'px';
-                        achievement.style.top = centerY + (Math.random() - 0.5) * 100 + 'px';
-                        achievement.style.fontSize = '20px';
-                        achievement.style.zIndex = '1000';
-                        achievement.style.animation = 'achievementFloat 3s ease-out forwards';
-                        achievement.style.pointerEvents = 'none';
-                        
-                        document.body.appendChild(achievement);
-                        setTimeout(() => achievement.remove(), 3000);
-                    }, i * 100);
-                }
-            });
-        });
-
-        // Continuous background animations
-        setInterval(updateNodeConnections, 100);
-
-        // Parallax effects for academic elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            
-            // Move formulas at different speeds
-            document.querySelectorAll('.formula').forEach((formula, index) => {
-                const speed = (index + 1) * 0.02;
-                formula.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-            
-            // Rotate coordinate system
-            const coordSystem = document.querySelector('.coordinate-system');
-            coordSystem.style.transform = `rotate(${scrolled * 0.05}deg)`;
-            
-            // Scale neural network based on scroll
-            const neuralNet = document.querySelector('.neural-network');
-            const scale = 1 + Math.sin(scrolled * 0.001) * 0.1;
-            neuralNet.style.transform = `scale(${scale})`;
-        });
-
-        // Hide cursor on mobile devices
-        if (window.innerWidth <= 768) {
-            cursor.style.display = 'none';
-        }
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-            if (window.innerWidth <= 768) {
-                cursor.style.display = 'none';
-            } else {
-                cursor.style.display = 'block';
-            }
-        });
-
-        // Initialize academic environment
-        setTimeout(() => {
-            // Start with some random formulas
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight;
-                    createInteractionParticle(x, y);
-                }, i * 1000);
-            }
-        }, 2000);
-    </script>
+    document.querySelectorAll('.card, .news-item, .project-card, .publication-card, .contact, .about-wrapper').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+    });
+</script>
 </body>
 </html>
