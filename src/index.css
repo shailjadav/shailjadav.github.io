@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Noto Serif", serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --color-background: #fef9f2;
+  --color-primary: #000000;
+  --color-secondary: #5d5e65;
+  --color-surface-container-low: #f8f3ed;
+  --color-surface-container-high: #ece7e2;
+  --color-surface-container-highest: #e6e2dc;
+  --color-outline-variant: #c7c6cb;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-background text-primary font-body;
+    overflow-x: hidden;
+  }
+
+  header[id],
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  @layer base {
+    html {
+      scroll-padding-top: 8rem;
+    }
+
+    header[id],
+    section[id] {
+      scroll-margin-top: 8rem;
+    }
+  }
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
