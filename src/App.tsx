@@ -351,7 +351,7 @@ export default function App() {
               <img
                 src={profileImage}
                 alt="Shail Jadav"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-primary text-white p-6 rounded-full shadow-xl">
